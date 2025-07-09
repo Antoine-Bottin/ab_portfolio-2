@@ -13,7 +13,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">
-              Alex Developer
+              Antoine Bottin
             </h3>
             <p className="text-gray-300">
               Crafting beautiful digital experiences that make a difference.
@@ -45,9 +45,9 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-white">Get In Touch</h4>
             <div className="space-y-2 text-gray-300">
-              <p>alex@example.com</p>
-              <p>+1 (555) 123-4567</p>
-              <p>San Francisco, CA</p>
+              <p>a.bottin.dev@gmail.com</p>
+              <p>+33 6 47 50 23 17</p>
+              <p>Dieppe, Normandie, FR</p>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@ const Footer = () => {
         <div className="mt-8 pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2 text-gray-300">
-              <span>© {currentYear} Alex Developer. Made with</span>
+              <span>© {currentYear} Antoine Bottin. Made with</span>
               <Heart className="w-4 h-4 text-red-400" />
               <span>and</span>
               <Code className="w-4 h-4 text-green-400" />

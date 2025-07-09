@@ -1,94 +1,129 @@
-import React from 'react';
-import { ExternalLink, Github, Zap, Star, Users } from 'lucide-react';
-import Image from 'next/image'
+'use client'
 
+import React, { useState } from 'react';
+import { ExternalLink, Github,  } from 'lucide-react';
 
 const Projects = () => {
-  const projects = [
+  const projectCard = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution with modern UI, secure payments, and real-time inventory management.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'AWS'],
-      features: ['Real-time inventory', 'Secure payments', 'Admin dashboard', 'Mobile responsive'],
-      github: '#',
-      demo: '#',
-      color: 'green'
+      pictureSrc: '/assets/icons/stemz-logo.svg',
+      videoSrc: '/assets/videos/Stemz.mp4',
+      title: 'Stemz Web',
+      url: 'https://stemz.mwm.io/',
+      company: 'mwm',
+      description: 'Next generation of music source separation.',
+      technologies: ['React', 'TypeScript', 'NextJs','Sass']
     },
     {
-      title: 'Social Media Dashboard',
-      description: 'Analytics dashboard for social media management with real-time metrics and automated reporting.',
-      image: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Next.js', 'TypeScript', 'GraphQL', 'MongoDB', 'Redis'],
-      features: ['Real-time analytics', 'Automated reports', 'Multi-platform', 'Team collaboration'],
-      github: '#',
-      demo: '#',
-      color: 'cyan'
+      pictureSrc: '/assets/icons/color-pop.png',
+      videoSrc: '/assets/videos/ColorPop.mp4',
+      title: 'Color Pop',
+      url: 'https://colorpop.ai/',
+      company: 'mwm',
+      description: 'AI-powered coloring app for the entire family.',
+      technologies: ['React', 'TypeScript', 'NextJs','Sass']
     },
     {
-      title: 'Task Management App',
-      description: 'Collaborative task management with real-time updates, team workspaces, and productivity insights.',
-      image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React Native', 'Firebase', 'Express.js', 'Socket.io'],
-      features: ['Real-time sync', 'Team workspaces', 'Productivity tracking', 'Cross-platform'],
-      github: '#',
-      demo: '#',
-      color: 'purple'
+      pictureSrc: '/assets/icons/mwm-rounded.webp',
+      videoSrc: '/assets/videos/Website.mp4',
+      title: 'MwM Website',
+      url: 'https://mwm.ai/',
+      company: 'mwm',
+      description: 'Corporate website showcasing AI solutions and company services.',
+      technologies: ['React', 'TypeScript', 'NextJs','Sass']
     },
     {
-      title: 'AI-Powered CRM',
-      description: 'Customer relationship management system with AI-driven insights and automated workflows.',
-      image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Vue.js', 'Python', 'TensorFlow', 'PostgreSQL', 'Docker'],
-      features: ['AI insights', 'Automated workflows', 'Lead scoring', 'Custom reports'],
-      github: '#',
-      demo: '#',
-      color: 'pink'
+      pictureSrc: '/assets/icons/yousing-logo.svg',
+      videoSrc: '/assets/videos/YouSing.mov',
+      title: 'Yousing',
+      url: 'https://www.yousing.ai/',
+      company: 'mwm',
+      description: 'AI-powered singing and voice training application with real-time feedback.',
+      technologies: ['React', 'TypeScript', 'NextJs','Sass']
     },
     {
-      title: 'Fitness Tracking Platform',
-      description: 'Comprehensive fitness platform with workout tracking, nutrition planning, and progress analytics.',
-      image: 'https://images.pexels.com/photos/416029/pexels-photo-416029.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Chart.js', 'AWS'],
-      features: ['Workout tracking', 'Nutrition planning', 'Progress analytics', 'Social features'],
-      github: '#',
-      demo: '#',
-      color: 'orange'
+      pictureSrc: '/assets/icons/ls-monogram.svg',
+      videoSrc: '/assets/videos/Leatherspa.mp4',
+      title: 'Leatherspa',
+      url: 'https://www.leatherspa.com/',
+      company: 'leatherspa',
+      description: 'Premium leather care and restoration service platform.',
+      technologies: ['React','Vanilla Extract Style']
     },
     {
-      title: 'Real Estate Platform',
-      description: 'Modern real estate platform with virtual tours, advanced search, and property management tools.',
-      image: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Angular', 'Spring Boot', 'MySQL', 'Google Maps API'],
-      features: ['Virtual tours', 'Advanced search', 'Property management', 'Market analytics'],
-      github: '#',
-      demo: '#',
-      color: 'blue'
-    }
+      pictureSrc: '/assets/pictures/photo_cv.jpg',
+      videoSrc: '/assets/videos/Xperience.mp4',
+      title: 'Xperience',
+      url: 'https://xperience.abottin.dev',
+      company: 'personnal',
+      description: 'IA pimped input answering your question about my experience.',
+      technologies: ['T3 Stack','Typescript','OpenAi fine tuned model', 'Tailwind']
+    },
+    {
+      pictureSrc: '/assets/icons/github-mark-white.png',
+      videoSrc: '/assets/videos/github.mp4',
+      title: 'Github',
+      url: 'https://github.com/Antoine-Bottin',
+      company: 'personnal',
+      description: 'My github public repos.',
+      technologies: ['Versionning', 'Git']
+    },
   ];
 
-  const getColorClasses = (color: string) => {
+  const badges = [
+    {
+      label: 'All Projects',
+      value: 'all',
+    },
+    {
+      label: 'MWM',
+      value: 'mwm',
+    },
+    {
+      label: 'Leatherspa',
+      value: 'leatherspa',
+    },
+    {
+      label: 'Personal Projects',
+      value: 'personnal',
+    },
+  ];
+
+  const [activeTab, setActiveTab] = useState('all');
+  // const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+
+  const filteredProjectCard = activeTab === 'all' 
+    ? projectCard 
+    : projectCard.filter((project) => project.company === activeTab);
+
+  const getCompanyColor = (company: string) => {
     const colors = {
-      green: 'text-green-400 hover:text-green-300',
-      cyan: 'text-cyan-400 hover:text-cyan-300',
-      purple: 'text-purple-400 hover:text-purple-300',
-      pink: 'text-pink-400 hover:text-pink-300',
-      orange: 'text-orange-400 hover:text-orange-300',
-      blue: 'text-blue-400 hover:text-blue-300'
+      mwm: 'from-blue-400 to-cyan-400',
+      leatherspa: 'from-amber-400 to-orange-400',
+      personnal: 'from-green-400 to-emerald-400',
     };
-    return colors[color as keyof typeof colors];
+    return colors[company as keyof typeof colors] || 'from-gray-400 to-gray-500';
   };
 
-  const getGradientClasses = (color: string) => {
-    const gradients = {
-      green: 'from-green-400 to-cyan-400',
-      cyan: 'from-cyan-400 to-blue-400',
-      purple: 'from-purple-400 to-pink-400',
-      pink: 'from-pink-400 to-red-400',
-      orange: 'from-orange-400 to-yellow-400',
-      blue: 'from-blue-400 to-indigo-400'
+  const getBadgeColor = (value: string, isActive: boolean) => {
+    if (value === 'all') {
+      return isActive 
+        ? 'bg-gradient-to-r from-green-400 to-cyan-400 text-gray-900' 
+        : 'bg-gray-700 text-gray-300 hover:bg-gray-600';
+    }
+    
+    const colors = {
+      mwm: isActive 
+        ? 'bg-gradient-to-r from-blue-400 to-cyan-400 text-gray-900' 
+        : 'bg-gray-700 text-gray-300 hover:bg-blue-400/20 hover:text-blue-400',
+      leatherspa: isActive 
+        ? 'bg-gradient-to-r from-amber-400 to-orange-400 text-gray-900' 
+        : 'bg-gray-700 text-gray-300 hover:bg-amber-400/20 hover:text-amber-400',
+      personnal: isActive 
+        ? 'bg-gradient-to-r from-green-400 to-emerald-400 text-gray-900' 
+        : 'bg-gray-700 text-gray-300 hover:bg-green-400/20 hover:text-green-400',
     };
-    return gradients[color as keyof typeof gradients];
+    return colors[value as keyof typeof colors] || 'bg-gray-700 text-gray-300';
   };
 
   return (
@@ -98,32 +133,45 @@ const Projects = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Featured <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">Projects</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            A showcase of my recent work and the technologies I've mastered.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            A showcase of my recent work across different companies and personal projects.
           </p>
+
+          {/* Filter Badges */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {badges.map((badge) => (
+              <button
+                key={badge.value}
+                onClick={() => setActiveTab(badge.value)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${getBadgeColor(badge.value, activeTab === badge.value)}`}
+              >
+                {badge.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {filteredProjectCard.map((project, index) => (
             <div
               key={index}
-              className="group bg-gray-800 rounded-lg border border-gray-700 overflow-hidden hover:border-gray-600 transition-all duration-300 hover:shadow-lg hover:shadow-gray-700/50 hover:scale-105"
+              className="group bg-gray-800 rounded-lg border border-gray-700 overflow-hidden hover:border-gray-600 transition-all duration-300 hover:shadow-lg hover:shadow-gray-700/50"
             >
-              <div className="relative overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={800}
-                  height={400}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute top-4 right-4 flex space-x-2">
-                  <div className="p-2 bg-gray-900/80 rounded-full">
-                    <Star className="w-4 h-4 text-yellow-400" />
-                  </div>
-                  <div className="p-2 bg-gray-900/80 rounded-full">
-                    <Users className="w-4 h-4 text-blue-400" />
+              <div className="relative overflow-hidden h-48">
+                <div className="w-full h-full bg-gray-700 flex items-center justify-center">
+                  <video
+                    src={project.videoSrc}
+                    width={400}
+                    height={200}
+                    controls={true}
+                    className="w-full h-full object-cover transition-transform duration-300"
+                   
+                  />
+                </div>
+                {/* Company Badge */}
+                <div className="absolute top-4 right-4">
+                  <div className={`px-3 py-1 bg-gradient-to-r ${getCompanyColor(project.company)} text-gray-900 text-xs font-medium rounded-full`}>
+                    {project.company.toUpperCase()}
                   </div>
                 </div>
               </div>
@@ -145,46 +193,44 @@ const Projects = () => {
                   ))}
                 </div>
 
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <Zap className="w-4 h-4 text-yellow-400" />
-                    <span className="text-sm text-gray-300">Key Features:</span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-1">
-                    {project.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center space-x-1">
-                        <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${getGradientClasses(project.color)}`}></div>
-                        <span className="text-xs text-gray-400">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
                 <div className="flex justify-between items-center pt-4 border-t border-gray-700">
                   <div className="flex space-x-4">
+                    {project.company === 'personnal' && (
+                      <a
+                        href={project.url}
+                        className="flex items-center space-x-1 text-green-400 hover:text-green-300 transition-colors duration-200"
+                      >
+                        <Github className="w-4 h-4" />
+                        <span className="text-sm">Code</span>
+                      </a>
+                    )}
                     <a
-                      href={project.github}
-                      className={`flex items-center space-x-1 transition-colors duration-200 ${getColorClasses(project.color)}`}
-                    >
-                      <Github className="w-4 h-4" />
-                      <span className="text-sm">Code</span>
-                    </a>
-                    <a
-                      href={project.demo}
-                      className={`flex items-center space-x-1 transition-colors duration-200 ${getColorClasses(project.color)}`}
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-1 text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      <span className="text-sm">Demo</span>
+                      <span className="text-sm">Visit</span>
                     </a>
                   </div>
-                  <button className={`px-4 py-2 bg-gradient-to-r ${getGradientClasses(project.color)} text-gray-900 text-sm font-medium rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105`}>
-                    View Details
+                  <button 
+                    className={`px-4 py-2 bg-gradient-to-r ${getCompanyColor(project.company)} text-gray-900 text-sm font-medium rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105`}
+                    onClick={() => window.open(project.url, '_blank')}
+                  >
+                    View Project
                   </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
+
+        {filteredProjectCard.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-400 text-lg">No projects found for the selected filter.</p>
+          </div>
+        )}
       </div>
     </section>
   );

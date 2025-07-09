@@ -28,11 +28,11 @@ const Hero = () => {
           {/* Profile Picture */}
           <div className="flex justify-center mb-8">
             <div className="relative">
-              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-gradient-to-r from-green-400 to-cyan-400 p-1 bg-gradient-to-r from-green-400 to-cyan-400">
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-gradient-to-r from-green-400 to-cyan-400 p-1 bg-gradient-to-r">
                 <div className="w-full h-full rounded-full overflow-hidden bg-gray-800">
                   <Image
                     src="/assets/pictures/photo_cv.jpg"
-                    alt="Alex Developer Profile"
+                    alt="Antoine Bottin picture"
                     width={160}
                     height={160}
                     className="w-full h-full object-cover"
@@ -61,6 +61,38 @@ const Hero = () => {
               <p className="text-green-400 font-mono text-lg md:text-xl leading-relaxed">
                 {timeElapsed || 'Calculating experience...'}
               </p>
+            </div>
+                       <div className="mt-8 flex justify-center">
+              <a
+                href="https://xperience.abottin.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm border border-purple-400/30 rounded-full hover:border-purple-400/60 transition-all duration-300 hover:shadow-lg hover:shadow-purple-400/25 hover:scale-105 max-w-full"
+              >
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-20 group-hover:opacity-40 animate-pulse"></div>
+                
+                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-green-400 to-emerald-400 text-gray-900 text-xs font-bold px-2 py-1 rounded-full animate-bounce shadow-lg z-10">
+                  NEW
+                </div>
+                
+                <div className="relative flex items-center flex-shrink-0">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-1 sm:mr-2"></div>
+                  <span className="text-xs font-medium text-purple-300 uppercase tracking-wider hidden sm:inline">Latest</span>
+                  <span className="text-xs font-medium text-purple-300 uppercase tracking-wider sm:hidden">New</span>
+                </div>
+                
+                <div className="flex items-center gap-1 sm:gap-2 min-w-0">
+                  <span className="text-white font-semibold text-sm sm:text-base truncate">AI Resume Assistant</span>
+                  <div className="w-1 h-1 bg-gray-400 rounded-full flex-shrink-0 hidden sm:block"></div>
+                  <span className="text-gray-300 text-xs sm:text-sm hidden sm:inline">Just Launched</span>
+                </div>
+                
+                <div className="ml-1 sm:ml-2 transform group-hover:translate-x-1 transition-transform duration-200 flex-shrink-0">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
             </div>
           </div>
 
