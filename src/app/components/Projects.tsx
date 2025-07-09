@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState } from 'react';
-import { ExternalLink, Github,  } from 'lucide-react';
 
 const Projects = () => {
   const projectCard = [
