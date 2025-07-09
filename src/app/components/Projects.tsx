@@ -193,27 +193,7 @@ const Projects = () => {
                   ))}
                 </div>
 
-                <div className="flex justify-between items-center pt-4 border-t border-gray-700">
-                  <div className="flex space-x-4">
-                    {project.company === 'personnal' && (
-                      <a
-                        href={project.url}
-                        className="flex items-center space-x-1 text-green-400 hover:text-green-300 transition-colors duration-200"
-                      >
-                        <Github className="w-4 h-4" />
-                        <span className="text-sm">Code</span>
-                      </a>
-                    )}
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-1 text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span className="text-sm">Visit</span>
-                    </a>
-                  </div>
+                <div className="flex justify-center align-middle items-center pt-4 border-t border-gray-700">
                   <button 
                     className={`px-4 py-2 bg-gradient-to-r ${getCompanyColor(project.company)} text-gray-900 text-sm font-medium rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105`}
                     onClick={() => window.open(project.url, '_blank')}
