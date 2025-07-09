@@ -40,7 +40,7 @@ const About = () => {
             About <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">Me</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            I'm a passionate developer with 5+ years of experience creating digital solutions that make a difference.
+            I'm a passionate developer with 4+ years of experience creating digital solutions that make a difference.
           </p>
         </div>
 
