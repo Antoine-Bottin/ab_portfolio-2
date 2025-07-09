@@ -5,8 +5,30 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Dark Portfolio with Fluorescent Highlights',
-  description: 'A modern portfolio showcasing my work and skills',
+    title: 'Antoine Bottin - Portfolio ',
+    description: 'This is my dev portfolio',
+    icons: [{ rel: 'icon', url: '/favicon.ico' }],
+    keywords: [
+        'web',
+        'developer',
+        'portfolio',
+        'Antoine Bottin',
+        'software ingeneer',
+        'reactJS',
+        'NextJs',
+        'NodeJs',
+        'TypeScript',
+        'JavaScript',
+        'HTML',
+    ],
+    metadataBase: new URL('https://www.portfolio.abottin.dev'),
+    openGraph: {
+        title: 'Antoine Bottin - Portfolio ',
+        description: 'This is my dev portfolio',
+        images: [{ url: '/assets/pictures/Photo_CV.jpg' }],
+        type: 'website',
+        url: 'https://www.portfolio.abottin.dev',
+    },
 }
 
 export default function RootLayout({
