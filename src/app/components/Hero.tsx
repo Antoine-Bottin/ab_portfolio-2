@@ -1,12 +1,29 @@
 'use client'
 
 import React from 'react';
-import { ChevronDown, Github, Linkedin, } from 'lucide-react';
+import { ChevronDown, Github, Linkedin,RotateCcw } from 'lucide-react';
 import Image from 'next/image';
 import useExperienceCounter from '../hooks/useDeveloperPeriod';
 
 const Hero = () => {
   const timeElapsed = useExperienceCounter();
+
+    const profilePictures = [
+    "/assets/pictures/photo_cv.jpg",
+    "/assets/pictures/photo_cv2.jpg",
+
+  ];
+  
+  const [currentPictureIndex, setCurrentPictureIndex] = React.useState(0);
+  const [isRotating, setIsRotating] = React.useState(false);
+  
+  const switchPicture = () => {
+    setIsRotating(true);
+    setTimeout(() => {
+      setCurrentPictureIndex((prev) => (prev + 1) % profilePictures.length);
+      setIsRotating(false);
+    }, 150);
+  };
 
   const scrollToAbout = () => {
     const element = document.querySelector('#about');
@@ -25,21 +42,35 @@ const Hero = () => {
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
         <div className="space-y-8">
-          {/* Profile Picture */}
+         {/* Profile Picture */}
           <div className="flex justify-center mb-8">
-            <div className="relative">
+            <div className="relative group">
               <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-gradient-to-r from-green-400 to-cyan-400 p-1 bg-gradient-to-r">
-                <div className="w-full h-full rounded-full overflow-hidden bg-gray-800">
+                <div className={`w-full h-full rounded-full overflow-hidden bg-gray-800 transition-transform duration-300 ${isRotating ? 'scale-95 rotate-12' : 'scale-100 rotate-0'}`}>
                   <Image
-                    src="/assets/pictures/photo_cv.jpg"
-                    alt="Antoine Bottin picture"
+                    src={profilePictures[currentPictureIndex]}
+                    alt="Alex Developer Profile"
                     width={160}
                     height={160}
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full object-cover transition-all duration-300 ${isRotating ? 'blur-sm' : 'blur-0'}`}
                   />
                 </div>
               </div>
-
+              
+              {/* Picture Switch Button */}
+              <button
+                onClick={switchPicture}
+                className="absolute -top-2 -left-2 w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-gray-900 flex items-center justify-center hover:scale-110 transition-all duration-300 group-hover:opacity-100 opacity-70 hover:shadow-lg hover:shadow-purple-400/50 hover:cursor-pointer"
+                title="Switch profile picture"
+              >
+                <RotateCcw className={`w-4 h-4 text-white transition-transform duration-300 ${isRotating ? 'rotate-180' : 'rotate-0'}`} />
+              </button>
+              
+              {/* Tooltip */}
+              <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap border border-gray-700 shadow-lg">
+                Don't like this picture? Click to switch!
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+              </div>
             </div>
           </div>
 
@@ -92,8 +123,40 @@ const Hero = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
+                
               </a>
             </div>
+             {/* Coming Soon Badge */}
+              <div className="group relative inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-orange-500/20 to-red-500/20 backdrop-blur-sm border border-orange-400/30 rounded-full hover:border-orange-400/60 transition-all duration-300 hover:shadow-lg hover:shadow-orange-400/25 hover:scale-105 max-w-full cursor-default">
+                {/* Animated pulse ring */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-red-400 rounded-full opacity-20 group-hover:opacity-40 animate-pulse"></div>
+                
+                {/* COMING SOON badge indicator */}
+                <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-400 text-gray-900 text-xs font-bold px-2 py-1 rounded-full animate-pulse shadow-lg z-10">
+                  SOON
+                </div>
+                
+                {/* Status indicator */}
+                <div className="relative flex items-center flex-shrink-0">
+                  <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse mr-1 sm:mr-2"></div>
+                  <span className="text-xs font-medium text-orange-300 uppercase tracking-wider">Coming Soon</span>
+                </div>
+                
+                {/* Project info */}
+                <div className="flex items-center gap-1 sm:gap-2 min-w-0">
+                  <span className="text-white font-semibold text-sm sm:text-base truncate">React Native Mobile App</span>
+                  <div className="w-1 h-1 bg-gray-400 rounded-full flex-shrink-0 hidden sm:block"></div>
+                  <span className="text-gray-300 text-xs sm:text-sm hidden sm:inline">In Development</span>
+                </div>
+                
+                {/* Clock icon instead of arrow */}
+                <div className="ml-1 sm:ml-2 flex-shrink-0">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-orange-400 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12,6 12,12 16,14"></polyline>
+                  </svg>
+                </div>
+              </div>
           </div>
 
           <div className="flex justify-center space-x-6">
