@@ -60,7 +60,7 @@ const Hero = () => {
               {/* Picture Switch Button */}
               <button
                 onClick={switchPicture}
-                className="absolute -top-2 -left-2 w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-gray-900 flex items-center justify-center hover:scale-110 transition-all duration-300 group-hover:opacity-100 opacity-70 hover:shadow-lg hover:shadow-purple-400/50 hover:cursor-pointer"
+                className="absolute -top-1 -left-0 w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-gray-900 flex items-center justify-center hover:scale-110 transition-all duration-300 group-hover:opacity-100 opacity-70 hover:shadow-lg hover:shadow-purple-400/50 hover:cursor-pointer"
                 title="Switch profile picture"
               >
                 <RotateCcw className={`w-4 h-4 text-white transition-transform duration-300 ${isRotating ? 'rotate-180' : 'rotate-0'}`} />
