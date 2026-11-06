@@ -5,7 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  { ignores: ['dist', '.next', 'node_modules', 'next-env.d.ts'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
@@ -24,5 +24,10 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
     },
+  },
+  {
+    // Next.js exige l'export de `metadata` dans les fichiers de layout
+    files: ['**/layout.tsx'],
+    rules: { 'react-refresh/only-export-components': 'off' },
   }
 );
